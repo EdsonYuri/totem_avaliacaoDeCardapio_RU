@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "author": "Edson Yuri",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 297.6, "left": -206.36, "attrs": {} },
+    { "type": "wokwi-ky-040", "id": "encoder1", "top": 376.1, "left": -413.6, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 236.6,
+      "left": -201.6,
+      "attrs": { "color": "red", "xray": "1" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 188.6,
+      "left": -201.6,
+      "attrs": { "color": "yellow", "xray": "1" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn3",
+      "top": 140.6,
+      "left": -201.6,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    { "type": "wokwi-ili9341", "id": "lcd2", "top": 260, "left": -9.9, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "btn1:2.r", "esp:GND.2", "black", [ "h29", "v67.4" ] ],
+    [ "btn2:2.r", "esp:GND.2", "black", [ "h38.6", "v105.8" ] ],
+    [ "btn3:2.r", "esp:GND.2", "black", [ "h48.2", "v153.8" ] ],
+    [ "btn3:1.l", "esp:14", "red", [ "h-28.8", "v278.4" ] ],
+    [ "btn1:1.l", "esp:27", "green", [ "h-9.6", "v172.8" ] ],
+    [ "btn2:1.l", "esp:26", "gold", [ "h-19.2", "v211.2" ] ],
+    [ "encoder1:CLK", "esp:32", "magenta", [ "h0" ] ],
+    [ "encoder1:DT", "esp:33", "cyan", [ "h0" ] ],
+    [ "encoder1:SW", "esp:3V3", "red", [ "h57.6", "v-76.7" ] ],
+    [ "encoder1:GND", "esp:GND.1", "black", [ "v0.8", "h57.6", "v28.8" ] ],
+    [ "esp:3V3", "lcd2:VCC", "red", [ "h0.15", "v-38.4", "h172.8", "v278.4", "h67.2" ] ],
+    [ "esp:3V3", "lcd2:LED", "red", [ "h9.75", "v-28.8", "h96", "v336", "h201.61" ] ],
+    [ "esp:GND.2", "lcd2:GND", "black", [ "h67.2", "v249.6", "h86.4" ] ],
+    [ "lcd2:MOSI", "esp:23", "blue", [ "v67.2", "h-163.21", "v-278.4" ] ],
+    [ "lcd2:SCK", "esp:18", "green", [ "v76.8", "h-182.41", "v-220.8" ] ],
+    [ "lcd2:CS", "esp:5", "gray", [ "v38.4", "h-105.6", "v-172.8" ] ],
+    [ "lcd2:RST", "esp:4", "white", [ "v48", "h-124.8", "v-153.6" ] ],
+    [ "lcd2:D/C", "esp:2", "violet", [ "v57.6", "h-144", "v-144" ] ]
+  ],
+  "dependencies": {}
+}
