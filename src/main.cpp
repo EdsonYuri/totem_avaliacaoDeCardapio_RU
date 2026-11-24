@@ -33,20 +33,20 @@ volatile bool tentouSemCredito = false;
 unsigned long tempoAviso = 0;
 bool avisoAtivo = false;
 
-const char* URL_AVALIACAO = "https://ru.ufrn.br/voto";
+const char* URL_AVALIACAO = "https://forms.gle/eJgbQT9jCQxa3pFH7";
 
 
 // Funções qrcode
 
 void desenhaQrCode(const char* texto){
-  //gera a estrutura do qrCode e reserva espaço na RAM para a versão 2 -qrcode_getBufferSize(2)-
+  //gera a estrutura do qrCode e reserva espaço na RAM para a versão 3 -qrcode_getBufferSize(3)-
   QRCode qrcode;
-  uint8_t qrCodeData[qrcode_getBufferSize(2)];
+  uint8_t qrCodeData[qrcode_getBufferSize(3)];
 
-  qrcode_initText(&qrcode, qrCodeData, 2, ECC_LOW, texto); // gera a matriz binária a partir do texto recebido
+  qrcode_initText(&qrcode, qrCodeData, 3, ECC_LOW, texto); // gera a matriz binária a partir do texto recebido
 
   //desenha o fundo branco do qrCode centralizando na janela do meio do display
-  int escala = 7; // cada modulo do qrCode tem 7x7 pixels 
+  int escala = 6; // cada modulo do qrCode tem 6x6 pixels 
   int margem = 4;
   int tamanhoTotal = (qrcode.size * escala) + (margem*2);
   int fundoX = (240 - tamanhoTotal) / 2;
@@ -68,8 +68,6 @@ void desenhaQrCode(const char* texto){
     }
   }
 }
-
-
 // funções de interação com botões
 
 void IRAM_ATTR precionarBotao(void* arg){ // IRAM_ATTR diz ao compilador para guardar a função na memória RAM ao invés da flash
